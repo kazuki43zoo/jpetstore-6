@@ -1,9 +1,48 @@
 language: java
 
-jdk:
-  - openjdk12
-  - openjdk11
-  - openjdk8
+matrix:
+  include:
+    - env: TARGET_AP_SERVER=tomcat90
+      jdk:
+        - openjdk12
+        - openjdk11
+        - openjdk8
+    - env: TARGET_AP_SERVER=tomcat85
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=tomcat70
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=tomee80
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=tomee71
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=wildfly16
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=wildfly13
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=liberty-ee8
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=liberty-ee7
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=jetty
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=glassfish5
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=glassfish4
+      jdk:
+        - openjdk11
+    - env: TARGET_AP_SERVER=resin
+      jdk:
+        - openjdk11
 
 cache:
   directories:
@@ -17,7 +56,7 @@ before_script:
 script:
   - |
     if [ "${TRAVIS_JDK_VERSION}" != "oraclejdk8" ]; then
-      ./mvnw -U clean verify cargo:daemon-start -P tomcat90
+      ./mvnw -U clean verify cargo:daemon-start -P ${TARGET_AP_SERVER}
       ./mvnw -U test -P itest
     else
       ./mvnw -U clean verify
