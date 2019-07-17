@@ -18,21 +18,23 @@ matrix:
       jdk: openjdk8
     - env: TARGET_AP_SERVER=tomee71
       jdk: openjdk8
-    - env: TARGET_AP_SERVER=wildfly16
-      jdk: openjdk8
-    - env: TARGET_AP_SERVER=wildfly13
-      jdk: openjdk8
     - env: TARGET_AP_SERVER=liberty-ee8
       jdk: openjdk8
     - env: TARGET_AP_SERVER=liberty-ee7
       jdk: openjdk8
     - env: TARGET_AP_SERVER=jetty
       jdk: openjdk8
+    - env: TARGET_AP_SERVER=resin
+      jdk: openjdk8
+  allow_failures:
+    # Failed integration test because cannot download application server
+    - env: TARGET_AP_SERVER=wildfly16
+      jdk: openjdk8
+    - env: TARGET_AP_SERVER=wildfly13
+      jdk: openjdk8
     - env: TARGET_AP_SERVER=glassfish5
       jdk: openjdk8
     - env: TARGET_AP_SERVER=glassfish4
-      jdk: openjdk8
-    - env: TARGET_AP_SERVER=resin
       jdk: openjdk8
 
 cache:
