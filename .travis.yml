@@ -23,9 +23,9 @@ matrix:
 #    - env: TARGET_AP_SERVER=tomee71
 #      jdk: openjdk8
     - env: TARGET_AP_SERVER=wildfly18
-      jdk: openjdk11
+      jdk: openjdk13
     - env: TARGET_AP_SERVER=wildfly13
-      jdk: openjdk11
+      jdk: openjdk13
 #    - env: TARGET_AP_SERVER=liberty-ee8
 #      jdk: openjdk8
 #    - env: TARGET_AP_SERVER=liberty-ee7
